@@ -32,7 +32,7 @@ const AI_CONFIG = {
   
   // 默认配置
   defaultProvider: 'kimi',
-  apiKey: 'sk-mdrZgEb0OUYtZamVwsEKMm7IRI48LYSCqdw3537ebtaa6D3I', // 在此替换为你的API Key
+  apiKey: '。。。', // 在此替换为你的API Key
   timeout: 30000,
   retryTimes: 3
 };
