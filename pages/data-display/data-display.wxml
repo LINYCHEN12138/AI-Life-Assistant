@@ -1,0 +1,5 @@
+<!--pages/data-display/data-display.wxml-->
+<view class="page-container">
+  <textarea class="data-textarea" value="{{jsonData}}" disabled></textarea>
+  <button class="copy-btn" bindtap="copyData">复制到剪贴板</button>
+</view> 

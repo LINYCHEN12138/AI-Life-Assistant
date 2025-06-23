@@ -1,0 +1,63 @@
+<!--pages/tasks/tasks.wxml-->
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="header-section">
+    <text class="header-title">我的任务</text>
+    <view class="add-task-btn" bindtap="navigateToCreate">
+      <text class="add-icon">+</text>
+      <text>创建任务</text>
+    </view>
+  </view>
+
+  <!-- 任务统计 -->
+  <view class="stats-section">
+    <view class="stat-item">
+      <text class="stat-value">{{summary.pending}}</text>
+      <text class="stat-label">待办</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{summary.completed}}</text>
+      <text class="stat-label">已完成</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{summary.total}}</text>
+      <text class="stat-label">全部任务</text>
+    </view>
+  </view>
+
+  <!-- 筛选和排序 -->
+  <view class="filter-section">
+    <view class="filter-tabs">
+      <view class="filter-tab {{currentFilter === 'pending' ? 'active' : ''}}" bindtap="setFilter" data-filter="pending">待办</view>
+      <view class="filter-tab {{currentFilter === 'completed' ? 'active' : ''}}" bindtap="setFilter" data-filter="completed">已完成</view>
+      <view class="filter-tab {{currentFilter === 'all' ? 'active' : ''}}" bindtap="setFilter" data-filter="all">全部</view>
+    </view>
+  </view>
+
+  <!-- 任务列表 -->
+  <scroll-view class="task-list-container" scroll-y="true">
+    <block wx:if="{{filteredTasks.length > 0}}">
+      <view 
+        class="task-item {{item.isCompleted ? 'completed' : ''}} priority-{{item.priority || 'medium'}}" 
+        wx:for="{{filteredTasks}}" 
+        wx:key="id"
+        bindtap="navigateToEdit"
+        data-task-id="{{item.id}}"
+      >
+        <view class="task-check" catchtap="toggleComplete" data-task-id="{{item.id}}">
+          <view class="checkbox {{item.isCompleted ? 'checked' : ''}}"></view>
+        </view>
+        <view class="task-content">
+          <text class="task-title">{{item.title}}</text>
+          <text class="task-deadline" wx:if="{{item.deadline}}">截止：{{item.deadline}}</text>
+        </view>
+        <view class="task-priority-indicator"></view>
+      </view>
+    </block>
+    <view class="empty-state" wx:else>
+      <text class="empty-icon">📝</text>
+      <text class="empty-text">暂无任务</text>
+      <text class="empty-desc">点击右上角创建一个新任务吧</text>
+    </view>
+  </scroll-view>
+</view> 

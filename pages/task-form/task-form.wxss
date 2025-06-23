@@ -1,0 +1,133 @@
+/* pages/task-form/task-form.wxss */
+.container {
+  padding: 30rpx;
+  padding-bottom: 180rpx; /* 为底部按钮留出空间 */
+  background-color: #f7f8fa;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.form-card {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 10rpx 30rpx 30rpx 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f2f3f5;
+}
+
+.form-group:last-child {
+  border-bottom: none;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.required {
+  color: #fa5151;
+  margin-right: 8rpx;
+}
+
+.form-input,
+.picker-input {
+  font-size: 28rpx;
+  color: #333;
+  width: 100%;
+}
+
+.picker-input.placeholder {
+  color: #999;
+}
+
+.form-textarea {
+  font-size: 28rpx;
+  color: #333;
+  width: 100%;
+  height: 200rpx;
+  padding: 10rpx 0;
+}
+
+/* 优先级选择器 */
+.priority-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.priority-option {
+  flex: 1;
+  text-align: center;
+  padding: 15rpx 0;
+  border: 1rpx solid #dcdfe6;
+  color: #606266;
+  border-radius: 8rpx;
+  transition: all 0.3s ease;
+}
+.priority-option:not(:last-child) {
+  margin-right: 20rpx;
+}
+
+.priority-option.active {
+  color: white;
+  border-width: 2rpx;
+  font-weight: bold;
+}
+.priority-option[data-priority="low"].active {
+  background-color: #67c23a;
+  border-color: #67c23a;
+}
+.priority-option[data-priority="medium"].active {
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+.priority-option[data-priority="high"].active {
+  background-color: #f56c6c;
+  border-color: #f56c6c;
+}
+
+
+/* 底部操作 */
+.footer-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  padding-bottom: env(safe-area-inset-bottom, 20rpx);
+  background-color: #ffffff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.save-btn,
+.delete-btn {
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+}
+.save-btn[disabled] {
+  background: #c8c9cc;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #fff;
+  color: #ef4444;
+  border: 1rpx solid #ef4444;
+} 

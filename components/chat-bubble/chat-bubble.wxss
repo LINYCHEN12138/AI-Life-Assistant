@@ -1,0 +1,610 @@
+ /* components/chat-bubble/chat-bubble.wxss */
+
+.chat-bubble {
+  display: flex;
+  margin-bottom: 30rpx;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.chat-bubble.user {
+  flex-direction: row-reverse;
+}
+
+.chat-bubble.ai {
+  flex-direction: row;
+}
+
+.bubble-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20rpx;
+  flex-shrink: 0;
+}
+
+.bubble-avatar {
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+}
+
+.avatar-text {
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.bubble-content {
+  max-width: 70%;
+  position: relative;
+}
+
+.user .bubble-content {
+  align-items: flex-end;
+}
+
+.ai .bubble-content {
+  align-items: flex-start;
+}
+
+/* 文本消息 */
+.bubble-text {
+  display: block;
+  padding: 20rpx 24rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.user .bubble-text {
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+  color: white;
+  border-bottom-right-radius: 8rpx;
+}
+
+.ai .bubble-text {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 语音消息 */
+.bubble-voice {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.voice-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #4A90E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.voice-symbol {
+  font-size: 32rpx;
+  color: white;
+}
+
+.voice-duration {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 日程卡片 */
+.bubble-schedule {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  margin: 10rpx 0;
+}
+
+.schedule-header {
+  padding: 20rpx 24rpx;
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+  color: white;
+}
+
+.schedule-title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.schedule-body {
+  padding: 20rpx 24rpx;
+}
+
+.schedule-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.schedule-time {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.schedule-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  font-style: italic;
+}
+
+.schedule-actions {
+  display: flex;
+  gap: 15rpx;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+}
+
+/* 任务卡片 */
+.bubble-task {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  margin: 10rpx 0;
+}
+
+.task-header {
+  padding: 20rpx 24rpx;
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+  color: white;
+}
+
+.task-title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.task-body {
+  padding: 20rpx 24rpx;
+}
+
+.task-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.task-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-priority,
+.task-deadline {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.task-actions {
+  display: flex;
+  gap: 15rpx;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+}/* components/chat-bubble/chat-bubble.wxss */
+
+.chat-bubble {
+  display: flex;
+  margin-bottom: 30rpx;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.chat-bubble.user {
+  flex-direction: row-reverse;
+}
+
+.chat-bubble.ai {
+  flex-direction: row;
+}
+
+.bubble-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20rpx;
+  flex-shrink: 0;
+}
+
+.bubble-avatar {
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+}
+
+.avatar-text {
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.bubble-content {
+  max-width: 70%;
+  position: relative;
+}
+
+.user .bubble-content {
+  align-items: flex-end;
+}
+
+.ai .bubble-content {
+  align-items: flex-start;
+}
+
+/* 文本消息 */
+.bubble-text {
+  display: block;
+  padding: 20rpx 24rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.user .bubble-text {
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+  color: white;
+  border-bottom-right-radius: 8rpx;
+}
+
+.ai .bubble-text {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 语音消息 */
+.bubble-voice {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.voice-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #4A90E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.voice-symbol {
+  font-size: 32rpx;
+  color: white;
+}
+
+.voice-duration {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 日程卡片 */
+.bubble-schedule {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  margin: 10rpx 0;
+}
+
+.schedule-header {
+  padding: 20rpx 24rpx;
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+  color: white;
+}
+
+.schedule-title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.schedule-body {
+  padding: 20rpx 24rpx;
+}
+
+.schedule-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.schedule-time {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.schedule-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  font-style: italic;
+}
+
+.schedule-actions {
+  display: flex;
+  gap: 15rpx;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+}
+
+/* 任务卡片 */
+.bubble-task {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  margin: 10rpx 0;
+}
+
+.task-header {
+  padding: 20rpx 24rpx;
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+  color: white;
+}
+
+.task-title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.task-body {
+  padding: 20rpx 24rpx;
+}
+
+.task-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.task-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-priority,
+.task-deadline {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.task-actions {
+  display: flex;
+  gap: 15rpx;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+}
+
+.card-confirmed {
+  display: flex;
+  gap: 15rpx;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+  align-items: center;
+  justify-content: center;
+  color: #07c160;
+}
+
+.confirmed-text {
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+/* 按钮样式 */
+.action-btn {
+  flex: 1;
+  padding: 12rpx 24rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.action-btn.confirm {
+  background: #4A90E2;
+  color: white;
+}
+
+.action-btn.modify {
+  background: transparent;
+  color: #666;
+  border: 2rpx solid #ddd;
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+/* 加载状态 */
+.bubble-loading {
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.loading-dots {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.loading-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #999;
+  border-radius: 50%;
+  animation: loading 1.4s infinite ease-in-out;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10rpx);
+  }
+} 
+
+/* 按钮样式 */
+.action-btn {
+  flex: 1;
+  padding: 12rpx 24rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.action-btn.confirm {
+  background: #4A90E2;
+  color: white;
+}
+
+.action-btn.modify {
+  background: transparent;
+  color: #666;
+  border: 2rpx solid #ddd;
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+/* 加载状态 */
+.bubble-loading {
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.loading-dots {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.loading-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #999;
+  border-radius: 50%;
+  animation: loading 1.4s infinite ease-in-out;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10rpx);
+  }
+} 

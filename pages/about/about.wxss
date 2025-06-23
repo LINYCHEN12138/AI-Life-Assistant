@@ -1,0 +1,59 @@
+/* pages/about/about.wxss */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+  background-color: #fff;
+  min-height: 100vh;
+}
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+.logo {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 24rpx;
+}
+.app-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.version {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+.info-list {
+  width: 100%;
+}
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #f2f3f5;
+}
+.item-label {
+  font-size: 32rpx;
+  color: #666;
+}
+.item-content {
+  font-size: 30rpx;
+  color: #333;
+  max-width: 400rpx;
+  text-align: right;
+}
+.link {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.copyright {
+  position: absolute;
+  bottom: 40rpx;
+  font-size: 24rpx;
+  color: #ccc;
+} 

@@ -1,0 +1,18 @@
+<!--pages/backup/backup.wxml-->
+<view class="page-container">
+  <view class="info-card">
+    <view class="card-title">备份说明</view>
+    <view class="card-content">
+      <text>点击"备份数据"会将当前所有的日程、任务和对话记录转换成文本格式，并复制到您的剪贴板。请将其粘贴到安全的地方（如备忘录）进行保存。</text>
+    </view>
+  </view>
+  <button class="action-btn backup-btn" bindtap="backupData">备份数据</button>
+
+  <view class="info-card">
+    <view class="card-title">恢复说明</view>
+    <view class="card-content">
+      <text>请先将之前备份的文本内容完整复制到剪贴板，然后点击"恢复数据"。应用会自动读取剪贴板内容并导入数据。注意：此操作会覆盖现有数据！</text>
+    </view>
+  </view>
+  <button class="action-btn restore-btn" bindtap="restoreData">恢复数据</button>
+</view> 

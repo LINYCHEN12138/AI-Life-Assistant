@@ -1,0 +1,123 @@
+<!--pages/schedule/schedule.wxml-->
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="header-section">
+    <view class="header-content">
+      <view class="date-display">
+        <text class="current-date">{{currentDate}}</text>
+        <text class="current-day">{{currentDay}}</text>
+      </view>
+      <view class="header-actions">
+        <view class="action-btn" bindtap="switchView">
+          <text class="action-icon">{{viewMode === 'month' ? '📅' : '📆'}}</text>
+          <text class="action-text">{{viewMode === 'month' ? '月视图' : '日视图'}}</text>
+        </view>
+        <view class="action-btn" bindtap="addSchedule">
+          <text class="action-icon">➕</text>
+          <text class="action-text">添加</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 日历视图 -->
+  <view class="calendar-section" wx:if="{{viewMode === 'month'}}">
+    <view class="calendar-header">
+      <view class="nav-btn" bindtap="prevMonth">
+        <text class="nav-icon">‹</text>
+      </view>
+      <text class="month-title">{{monthTitle}}</text>
+      <view class="nav-btn" bindtap="nextMonth">
+        <text class="nav-icon">›</text>
+      </view>
+    </view>
+
+    <view class="weekdays">
+      <text class="weekday" wx:for="{{weekdays}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <view class="calendar-grid">
+      <view 
+        class="calendar-day {{item.isCurrentMonth ? '' : 'other-month'}} {{item.isToday ? 'today' : ''}} {{item.hasSchedule ? 'has-schedule' : ''}}"
+        wx:for="{{calendarDays}}" 
+        wx:key="date"
+        bindtap="selectDate"
+        data-date="{{item.date}}"
+      >
+        <text class="day-number">{{item.day}}</text>
+        <view class="schedule-dots" wx:if="{{item.scheduleCount > 0}}">
+          <view class="schedule-dot" wx:for="{{item.scheduleCount}}" wx:key="*this" wx:for-item="dot"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 日程列表 -->
+  <view class="schedule-list-section">
+    <view class="section-header">
+      <text class="section-title">{{viewMode === 'month' ? '今日日程' : '日程详情'}}</text>
+      <view class="filter-tabs">
+        <view 
+          class="filter-tab {{currentFilter === 'all' ? 'active' : ''}}" 
+          bindtap="setFilter" 
+          data-filter="all"
+        >
+          全部
+        </view>
+        <view 
+          class="filter-tab {{currentFilter === 'work' ? 'active' : ''}}" 
+          bindtap="setFilter" 
+          data-filter="work"
+        >
+          工作
+        </view>
+        <view 
+          class="filter-tab {{currentFilter === 'personal' ? 'active' : ''}}" 
+          bindtap="setFilter" 
+          data-filter="personal"
+        >
+          个人
+        </view>
+      </view>
+    </view>
+
+    <scroll-view class="schedule-list" scroll-y="true">
+      <view wx:if="{{filteredSchedules.length === 0}}" class="empty-state">
+        <view class="empty-icon">📅</view>
+        <text class="empty-text">暂无日程</text>
+        <text class="empty-desc">点击右上角添加按钮创建你的第一个日程</text>
+      </view>
+
+      <view 
+        class="schedule-item {{item.category}}"
+        wx:for="{{filteredSchedules}}" 
+        wx:key="id"
+        bindtap="editSchedule"
+        data-schedule="{{item}}"
+      >
+        <view class="schedule-time">
+          <text class="time-start">{{item.startTime}}</text>
+          <text class="time-end">{{item.endTime}}</text>
+        </view>
+        <view class="schedule-content">
+          <view class="schedule-header">
+            <text class="schedule-title">{{item.title}}</text>
+            <view class="schedule-status">
+              <text class="status-badge {{item.status}}">{{item.statusText}}</text>
+            </view>
+          </view>
+          <text class="schedule-desc" wx:if="{{item.description}}">{{item.description}}</text>
+          <view class="schedule-meta">
+            <text class="schedule-category">{{item.categoryText}}</text>
+            <text class="schedule-location" wx:if="{{item.location}}">📍 {{item.location}}</text>
+          </view>
+        </view>
+        <view class="schedule-actions">
+          <view class="action-icon" bindtap="toggleComplete" data-id="{{item.id}}">
+            <text class="icon-text">{{item.isCompleted ? '✓' : '○'}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view> 

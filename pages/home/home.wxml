@@ -1,0 +1,172 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <!-- 顶部欢迎区域 -->
+  <view class="welcome-section">
+    <view class="welcome-text">
+      <text class="greeting">你好！我是你的AI生活助手</text>
+      <text class="subtitle">有什么可以帮助你的吗？</text>
+    </view>
+    <view class="quick-actions">
+      <view class="action-btn" bindtap="quickAction" data-action="schedule">
+        <text class="action-icon">📅</text>
+        <text class="action-text">添加日程</text>
+      </view>
+      <view class="action-btn" bindtap="quickAction" data-action="task">
+        <text class="action-icon">📝</text>
+        <text class="action-text">创建任务</text>
+      </view>
+      <view class="action-btn" bindtap="quickAction" data-action="reminder">
+        <text class="action-icon">⏰</text>
+        <text class="action-text">设置提醒</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 聊天消息列表 -->
+  <scroll-view 
+    class="chat-container" 
+    scroll-y="true" 
+    scroll-into-view="{{scrollToMessage}}"
+    scroll-with-animation="true"
+    enhanced="true"
+    show-scrollbar="false"
+  >
+    <view class="chat-messages">
+      <!-- 欢迎消息 -->
+      <view class="message ai-message" wx:if="{{messages.length === 0}}">
+        <view class="message-avatar">
+          <text class="avatar-text">AI</text>
+        </view>
+        <view class="message-content">
+          <text class="message-text">你好！我是你的AI生活助手，我可以帮你：</text>
+          <view class="feature-list">
+            <text class="feature-item">• 管理日程和任务</text>
+            <text class="feature-item">• 设置提醒和闹钟</text>
+            <text class="feature-item">• 提供生活建议</text>
+            <text class="feature-item">• 回答各种问题</text>
+          </view>
+          <text class="message-text">请告诉我你需要什么帮助吧！</text>
+        </view>
+      </view>
+
+      <!-- 消息列表 -->
+      <block wx:for="{{messages}}" wx:key="id">
+        <view class="message {{item.type === 'user' ? 'user-message' : 'ai-message'}}" id="msg-{{item.id}}">
+          <view class="message-avatar" wx:if="{{item.type === 'ai'}}">
+            <text class="avatar-text">AI</text>
+          </view>
+          <view class="message-content">
+            <!-- 文本消息 -->
+            <text class="message-text" wx:if="{{item.contentType === 'text'}}">{{item.content}}</text>
+            
+            <!-- 语音消息 -->
+            <view class="voice-message" wx:if="{{item.contentType === 'voice'}}">
+              <view class="voice-icon" bindtap="playVoice" data-url="{{item.content}}">
+                <text class="voice-symbol">🔊</text>
+              </view>
+              <text class="voice-duration">{{item.duration}}s</text>
+            </view>
+
+            <!-- 日程卡片 -->
+            <view class="ai-card schedule-card" wx:if="{{item.contentType === 'schedule'}}">
+              <view class="card-header">
+                <text class="card-icon">📅</text>
+                <text class="card-title">日程提醒</text>
+              </view>
+              <view class="card-body">
+                <view class="card-item">
+                  <text class="card-item-label">标题</text>
+                  <text class="card-item-value">{{item.content.title}}</text>
+                </view>
+                <view class="card-item">
+                  <text class="card-item-label">时间</text>
+                  <text class="card-item-value">{{item.content.date}} {{item.content.time}}</text>
+                </view>
+                <view class="card-item" wx:if="{{item.content.description}}">
+                  <text class="card-item-label">备注</text>
+                  <text class="card-item-value">{{item.content.description}}</text>
+                </view>
+              </view>
+              <view class="card-actions">
+                <button class="card-btn confirm-btn" bindtap="confirmSchedule" data-schedule="{{item.content}}">确认添加</button>
+                <button class="card-btn" bindtap="modifySchedule" data-schedule="{{item.content}}">修改</button>
+              </view>
+            </view>
+
+            <!-- 任务卡片 -->
+            <view class="ai-card task-card" wx:if="{{item.contentType === 'task'}}">
+              <view class="card-header">
+                <text class="card-icon">📝</text>
+                <text class="card-title">任务建议</text>
+              </view>
+              <view class="card-body">
+                <view class="card-item">
+                  <text class="card-item-label">任务</text>
+                  <text class="card-item-value">{{item.content.title}}</text>
+                </view>
+                <view class="card-item" wx:if="{{item.content.deadline}}">
+                  <text class="card-item-label">截止日期</text>
+                  <text class="card-item-value">{{item.content.deadline}}</text>
+                </view>
+                 <view class="card-item" wx:if="{{item.content.priority}}">
+                  <text class="card-item-label">优先级</text>
+                  <text class="card-item-value priority-{{item.content.priority}}">{{item.content.priority}}</text>
+                </view>
+              </view>
+              <view class="card-actions">
+                <button class="card-btn confirm-btn" bindtap="confirmTask" data-task="{{item.content}}">立即创建</button>
+                <button class="card-btn" bindtap="modifyTask" data-task="{{item.content}}">修改</button>
+              </view>
+            </view>
+
+            <!-- 加载状态 -->
+            <view class="typing-indicator" wx:if="{{item.loading}}">
+              <view class="typing-dot"></view>
+              <view class="typing-dot"></view>
+              <view class="typing-dot"></view>
+            </view>
+          </view>
+          <view class="message-avatar user-avatar" wx:if="{{item.type === 'user'}}">
+            <text class="avatar-text">我</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入区域 -->
+  <view class="input-section">
+    <view class="input-container">
+      <!-- 语音按钮 -->
+      <view class="voice-btn {{isRecording ? 'recording' : ''}}" bindtouchstart="startRecording" bindtouchend="stopRecording">
+        <text class="voice-icon">{{isRecording ? '🎤' : '🎤'}}</text>
+      </view>
+      
+      <!-- 文本输入框 -->
+      <input 
+        class="text-input" 
+        placeholder="输入消息或语音输入..." 
+        value="{{inputText}}"
+        bindinput="onInputChange"
+        bindconfirm="sendMessage"
+        confirm-type="send"
+        disabled="{{isRecording}}"
+      />
+      
+      <!-- 发送按钮 -->
+      <view class="send-btn {{inputText.trim() ? 'active' : ''}}" bindtap="sendMessage">
+        <text class="send-icon">📤</text>
+      </view>
+    </view>
+    
+    <!-- 录音提示 -->
+    <view class="recording-tip" wx:if="{{isRecording}}">
+      <text class="tip-text">正在录音，松开发送</text>
+      <view class="recording-wave">
+        <view class="wave-bar"></view>
+        <view class="wave-bar"></view>
+        <view class="wave-bar"></view>
+      </view>
+    </view>
+  </view>
+</view> 

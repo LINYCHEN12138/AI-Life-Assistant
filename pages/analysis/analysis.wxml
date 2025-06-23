@@ -1,0 +1,68 @@
+<!--pages/analysis/analysis.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">数据分析</text>
+    <text class="subtitle">全面了解你的效率</text>
+  </view>
+
+  <!-- 总体统计 -->
+  <view class="section">
+    <view class="section-title">总体概览</view>
+    <view class="summary-grid">
+      <view class="summary-card">
+        <view class="card-value">{{stats.totalTasks}}</view>
+        <view class="card-label">总任务数</view>
+      </view>
+      <view class="summary-card">
+        <view class="card-value">{{stats.completedTasks}}</view>
+        <view class="card-label">已完成</view>
+      </view>
+      <view class="summary-card">
+        <view class="card-value">{{stats.completionRate}}%</view>
+        <view class="card-label">完成率</view>
+      </view>
+      <view class="summary-card">
+        <view class="card-value">{{stats.avgCompletionTime}}</view>
+        <view class="card-label">平均完成周期</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 任务完成趋势 -->
+  <view class="section">
+    <view class="section-title">本周任务完成趋势</view>
+    <view class="chart-container">
+      <view class="y-axis">
+        <view class="y-label" wx:for="{{[4, 2, 0]}}" wx:key="*this">{{item}}</view>
+      </view>
+      <view class="bar-chart">
+        <view class="bar-item" wx:for="{{chartData.weeklyTrend}}" wx:key="day">
+          <view class="bar" style="height: {{item.percentage}}%;"></view>
+          <view class="bar-label">{{item.day}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 优先级分布 -->
+  <view class="section">
+    <view class="section-title">任务优先级分布</view>
+    <view class="pie-chart-container">
+      <view class="pie-legend">
+        <view class="legend-item">
+          <view class="legend-color high"></view>
+          <text>高优先级: {{stats.priority.high}}</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color medium"></view>
+          <text>中优先级: {{stats.priority.medium}}</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color low"></view>
+          <text>低优先级: {{stats.priority.low}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view> 

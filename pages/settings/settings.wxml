@@ -1,0 +1,21 @@
+<!--pages/settings/settings.wxml-->
+<view class="page-container">
+  <view class="setting-group">
+    <view class="setting-item">
+      <text class="item-label">主题模式</text>
+      <radio-group class="theme-selector" bindchange="themeChange">
+        <label class="theme-option">
+          <radio value="light" checked="{{theme === 'light'}}"/>
+          <text>明亮模式</text>
+        </label>
+        <label class="theme-option">
+          <radio value="dark" checked="{{theme === 'dark'}}"/>
+          <text>深色模式</text>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="tips">
+    <text>更多设置正在开发中...</text>
+  </view>
+</view> 

@@ -1,0 +1,120 @@
+/* pages/analysis/analysis.wxss */
+.container {
+  padding: 30rpx;
+  background-color: #f7f8fa;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 40rpx;
+}
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  display: block;
+}
+.subtitle {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.section {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0,0,0,0.05);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40rpx;
+}
+
+.summary-card {
+  text-align: center;
+}
+.card-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10rpx;
+}
+.card-label {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+/* 柱状图 */
+.chart-container {
+  display: flex;
+  height: 300rpx;
+}
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #999;
+  padding-right: 15rpx;
+}
+.bar-chart {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  border-left: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+  padding-left: 10rpx;
+}
+.bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 10rpx;
+}
+.bar {
+  width: 60%;
+  background-color: var(--primary-light);
+  border-radius: 8rpx 8rpx 0 0;
+  transition: height 0.5s ease-out;
+}
+.bar-label {
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 图例 */
+.pie-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+}
+.legend-color {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 4rpx;
+  margin-right: 15rpx;
+}
+.legend-color.high { background-color: #f56c6c; }
+.legend-color.medium { background-color: #e6a23c; }
+.legend-color.low { background-color: #67c23a; } 

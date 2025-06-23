@@ -1,0 +1,30 @@
+/* pages/backup/backup.wxss */
+.page-container {
+  padding: 30rpx;
+}
+.info-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.card-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.card-content {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #666;
+}
+.action-btn {
+  margin-bottom: 50rpx;
+  color: white;
+}
+.backup-btn {
+  background-color: var(--primary-color);
+}
+.restore-btn {
+  background-color: #e6a23c;
+} 

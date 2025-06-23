@@ -1,0 +1,514 @@
+/* pages/home/home.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+/* 顶部欢迎区域 */
+.welcome-section {
+  padding: 30rpx;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(74, 144, 226, 0.3);
+}
+
+.welcome-text {
+  margin-bottom: 30rpx;
+}
+
+.greeting {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+.quick-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20rpx;
+  border-radius: 16rpx;
+  width: 180rpx;
+  transition: all 0.3s ease;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.action-icon {
+  font-size: 40rpx;
+}
+
+.action-text {
+  font-size: 24rpx;
+}
+
+/* 聊天消息列表 */
+.chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20rpx;
+  -webkit-overflow-scrolling: touch; /* iOS 滚动优化 */
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.message {
+  display: flex;
+  gap: 20rpx;
+  max-width: 80%;
+}
+
+.ai-message {
+  align-self: flex-start;
+}
+
+.user-message {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--primary-color);
+}
+
+.user-avatar {
+  background: var(--secondary-color);
+}
+
+.avatar-text {
+  color: white;
+  font-weight: bold;
+}
+
+.message-content {
+  padding: 20rpx;
+  border-radius: 20rpx;
+  background: var(--bg-primary);
+  box-shadow: 0 4rpx 12rpx var(--shadow-color);
+}
+
+.ai-message .message-content {
+  border-top-left-radius: 8rpx;
+}
+
+.user-message .message-content {
+  border-top-right-radius: 8rpx;
+  background: var(--primary-light);
+  color: white;
+}
+
+.message-text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+/* AI 卡片通用样式 */
+.ai-card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  width: 100%;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  margin-top: 10rpx;
+}
+
+.ai-message .message-content .ai-card {
+  /* 当卡片在AI消息气泡内时，移除重复的样式 */
+  box-shadow: none;
+  padding: 0;
+  margin-top: 10rpx;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.card-icon {
+  font-size: 40rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.card-body {
+  padding: 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.card-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20rpx;
+  align-items: start;
+  font-size: 28rpx;
+}
+
+.card-item-label {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  margin-right: 20rpx;
+  text-align: right;
+  word-break: break-all;
+}
+
+.card-item-value {
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: right;
+  word-break: break-all;
+}
+
+.priority-high { color: #fa5151; font-weight: bold; }
+.priority-medium { color: #ff976a; font-weight: bold; }
+.priority-low { color: #07c160; font-weight: bold; }
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 20rpx;
+  padding-top: 20rpx;
+  margin-top: 10rpx;
+  border-top: 1rpx solid var(--border-color);
+}
+
+.card-btn {
+  background-color: transparent;
+  border: 1rpx solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 10rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  margin: 0;
+  line-height: 1.5;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.card-btn::after {
+  border: none;
+}
+
+.card-btn.confirm-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.feature-list {
+  margin-top: 15rpx;
+}
+
+.feature-item {
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.5;
+  margin-bottom: 5rpx;
+}
+
+/* 底部输入区域 */
+.input-section {
+  padding: 20rpx;
+  background: var(--bg-primary);
+  border-top: 1rpx solid var(--border-color);
+  box-shadow: 0 -4rpx 12rpx var(--shadow-color);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.voice-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.voice-btn.recording {
+  background: var(--primary-color);
+  color: white;
+}
+
+.voice-icon {
+  font-size: 40rpx;
+}
+
+.text-input {
+  flex: 1;
+  height: 80rpx;
+  background: var(--bg-secondary);
+  border-radius: 40rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+}
+
+.send-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.send-btn.active {
+  transform: scale(1);
+}
+
+.send-icon {
+  font-size: 40rpx;
+  color: white;
+}
+
+.recording-tip {
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-top: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+}
+
+.recording-wave {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.wave-bar {
+  width: 4rpx;
+  height: 20rpx;
+  background: var(--primary-color);
+  border-radius: 2rpx;
+  animation: wave 1.2s infinite ease-in-out;
+}
+
+.wave-bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.wave-bar:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* 功能列表 */
+.feature-list {
+  margin: 20rpx 0;
+}
+
+.feature-item {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+  padding-left: 20rpx;
+}
+
+/* 语音消息 */
+.voice-message {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.voice-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #4A90E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.voice-symbol {
+  font-size: 32rpx;
+  color: white;
+}
+
+.voice-duration {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 卡片样式 */
+.schedule-card,
+.task-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  margin: 10rpx 0;
+}
+
+.card-header {
+  padding: 20rpx 24rpx;
+  background: linear-gradient(135deg, #4A90E2, #7BB3F0);
+  color: white;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20rpx 24rpx;
+}
+
+.schedule-title,
+.task-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.schedule-time,
+.task-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.schedule-desc {
+  font-style: italic;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15rpx;
+}
+
+.task-priority,
+.task-deadline {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.card-actions {
+  display: flex;
+  gap: 15rpx;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+}
+
+/* 打字指示器 */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.typing-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #999;
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* 动画 */
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-10rpx); }
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .message-content {
+    max-width: 80%;
+  }
+  
+  .quick-actions {
+    gap: 15rpx;
+  }
+  
+  .action-btn {
+    padding: 15rpx;
+  }
+} 

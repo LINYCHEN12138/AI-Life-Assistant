@@ -1,0 +1,21 @@
+<!--pages/ai-config/ai-config.wxml-->
+<view class="page-container">
+  <view class="setting-group">
+    <view class="setting-item">
+      <text class="item-label">AI服务商</text>
+      <picker bindchange="onProviderChange" value="{{providerIndex}}" range="{{providerRange}}">
+        <view class="picker">
+          {{providerRange[providerIndex]}}
+        </view>
+      </picker>
+    </view>
+    <view class="setting-item">
+      <text class="item-label">API Key</text>
+      <input class="item-input" value="{{config.apiKey}}" placeholder="请输入您的API Key" bindinput="onApiKeyInput" password/>
+    </view>
+  </view>
+  <button class="save-btn" bindtap="saveConfig">保存配置</button>
+  <view class="tips">
+    <text>API Key仅保存在本地，请放心使用。</text>
+  </view>
+</view> 

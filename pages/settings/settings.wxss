@@ -1,0 +1,36 @@
+/* pages/settings/settings.wxss */
+.page-container {
+  padding: 20rpx;
+}
+
+.setting-group {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 10rpx 30rpx;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.item-label {
+  font-size: 32rpx;
+}
+
+.theme-selector {
+  display: flex;
+}
+
+.theme-option {
+  margin-left: 20rpx;
+}
+
+.tips {
+  margin-top: 40rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+} 

@@ -1,0 +1,72 @@
+<!--pages/profile/profile.wxml-->
+<view class="page-container">
+  <!-- 用户信息 -->
+  <view class="user-card" bindtap="login">
+    <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
+    <view class="user-info">
+      <text class="nickname">{{userInfo.nickName || '点击登录'}}</text>
+      <text class="motto" wx:if="{{userInfo.nickName}}">保持高效，保持专注</text>
+    </view>
+    <view class="arrow-right">›</view>
+  </view>
+
+  <!-- 设置 -->
+  <view class="setting-group">
+    <view class="group-title">通用设置</view>
+    <view class="setting-item" bindtap="navigateTo" data-page="settings">
+      <image class="item-icon" src="/images/icons/settings.svg" mode="aspectFit"></image>
+      <text class="item-label">应用设置和偏好</text>
+      <view class="arrow-right">›</view>
+    </view>
+    <view class="setting-item" bindtap="navigateTo" data-page="ai-config">
+      <image class="item-icon" src="/images/icons/ai.svg" mode="aspectFit"></image>
+      <text class="item-label">AI 服务配置</text>
+      <view class="arrow-right">›</view>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="setting-group">
+    <view class="group-title">数据管理</view>
+    <view class="setting-item" bindtap="navigateTo" data-page="backup">
+      <image class="item-icon" src="/images/icons/backup.svg" mode="aspectFit"></image>
+      <text class="item-label">数据备份和恢复</text>
+      <view class="arrow-right">›</view>
+    </view>
+    <view class="setting-item" bindtap="exportData">
+      <image class="item-icon" src="/images/icons/export.svg" mode="aspectFit"></image>
+      <text class="item-label">导出数据</text>
+      <view class="arrow-right">›</view>
+    </view>
+     <view class="setting-item" bindtap="clearData">
+      <image class="item-icon" src="/images/icons/clear.svg" mode="aspectFit"></image>
+      <text class="item-label">清空本地数据</text>
+      <view class="arrow-right">›</view>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="setting-group">
+    <view class="group-title">关于应用</view>
+    <button class="setting-item share-button" open-type="share">
+      <image class="item-icon" src="/images/icons/share.svg" mode="aspectFit"></image>
+      <text class="item-label">分享应用</text>
+      <text class="arrow-right">›</text>
+    </button>
+    <view class="setting-item" bindtap="rateApp">
+      <image class="item-icon" src="/images/icons/rate.svg" mode="aspectFit"></image>
+      <text class="item-label">评价应用</text>
+      <view class="arrow-right">›</view>
+    </view>
+     <view class="setting-item" bindtap="navigateTo" data-page="about">
+      <image class="item-icon" src="/images/icons/about.svg" mode="aspectFit"></image>
+      <text class="item-label">关于和帮助</text>
+      <view class="arrow-right">›</view>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text>AI生活助手 v1.0.0 © 2025</text>
+  </view>
+</view> 

@@ -1,0 +1,40 @@
+/* pages/ai-config/ai-config.wxss */
+.page-container {
+  padding: 20rpx;
+}
+.setting-group {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 10rpx 30rpx;
+}
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f2f3f5;
+}
+.setting-item:last-child {
+  border-bottom: none;
+}
+.item-label {
+  font-size: 32rpx;
+}
+.item-input {
+  text-align: right;
+  font-size: 30rpx;
+}
+.picker {
+  font-size: 30rpx;
+}
+.save-btn {
+  margin-top: 50rpx;
+  background-color: var(--primary-color);
+  color: white;
+}
+.tips {
+  margin-top: 40rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+} 

@@ -1,0 +1,119 @@
+/* pages/profile/profile.wxss */
+page {
+  background-color: #f7f8fa;
+}
+
+.page-container {
+  padding-bottom: 40rpx;
+}
+
+/* 用户卡片 */
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 40rpx;
+  margin: 30rpx 30rpx 0;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 20rpx rgba(88, 101, 242, 0.2);
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.5);
+  margin-right: 30rpx;
+}
+
+.user-info {
+  flex-grow: 1;
+}
+
+.nickname {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.motto {
+  font-size: 26rpx;
+  opacity: 0.8;
+  margin-top: 8rpx;
+}
+
+.arrow-right {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 设置组 */
+.setting-group {
+  margin: 30rpx;
+  background-color: #fff;
+  border-radius: 24rpx;
+  padding: 0 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.group-title {
+  font-size: 28rpx;
+  color: #909399;
+  padding: 30rpx 0;
+  font-weight: bold;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-top: 1rpx solid #f2f3f5;
+  transition: background-color 0.2s;
+}
+
+.setting-item:active {
+  background-color: #f9f9f9;
+}
+
+.item-icon {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 24rpx;
+}
+
+.item-label {
+  flex-grow: 1;
+  font-size: 32rpx;
+  color: #303133;
+}
+
+.setting-item .arrow-right {
+  font-size: 36rpx;
+  color: #c8c9cc;
+}
+
+/* 针对分享按钮的特殊样式 */
+.share-button {
+  padding: 30rpx 0;
+  margin: 0;
+  background-color: transparent;
+  line-height: normal;
+  border-radius: 0;
+  text-align: left;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.share-button::after {
+  border: none;
+}
+
+/* 版本信息 */
+.version-info {
+  text-align: center;
+  color: #c0c4cc;
+  font-size: 24rpx;
+  margin-top: 40rpx;
+} 

@@ -1,0 +1,21 @@
+<!--pages/login/login.wxml-->
+<view class="page-container">
+  <view class="form-container">
+    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image class="avatar" src="{{avatarUrl || '/images/default-avatar.png'}}"></image>
+      <view class="avatar-tip">点击更换头像</view>
+    </button>
+
+    <view class="form-item">
+      <text class="item-label">昵称</text>
+      <input class="item-input" type="nickname" placeholder="请输入昵称" value="{{nickname}}" bindinput="onNicknameInput"/>
+    </view>
+
+    <view class="form-item">
+      <text class="item-label">座右铭</text>
+      <input class="item-input" placeholder="写下一句激励自己的话吧" value="{{motto}}" bindinput="onMottoInput"/>
+    </view>
+    
+    <button class="save-btn" bindtap="saveProfile">保存信息</button>
+  </view>
+</view> 

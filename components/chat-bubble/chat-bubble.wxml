@@ -1,0 +1,75 @@
+<!--components/chat-bubble/chat-bubble.wxml-->
+<view class="chat-bubble {{type}} {{contentType}}">
+  <view class="bubble-avatar" wx:if="{{type === 'ai'}}">
+    <text class="avatar-text">AI</text>
+  </view>
+  
+  <view class="bubble-content">
+    <!-- 文本消息 -->
+    <text class="bubble-text" user-select wx:if="{{contentType === 'text'}}">{{content}}</text>
+    
+    <!-- 语音消息 -->
+    <view class="bubble-voice" wx:if="{{contentType === 'voice'}}">
+      <view class="voice-icon" bindtap="playVoice">
+        <text class="voice-symbol">🔊</text>
+      </view>
+      <text class="voice-duration">{{duration}}s</text>
+    </view>
+    
+    <!-- 日程卡片 -->
+    <view class="bubble-schedule" wx:if="{{contentType === 'schedule'}}">
+      <view class="schedule-header">
+        <text class="schedule-title">📅 日程提醒</text>
+      </view>
+      <view class="schedule-body">
+        <text class="schedule-name">{{content.title}}</text>
+        <text class="schedule-time">{{content.time}}</text>
+        <text class="schedule-desc">{{content.description}}</text>
+      </view>
+      <view class="schedule-actions" wx:if="{{!isConfirmed}}">
+        <button class="action-btn confirm" bindtap="confirmSchedule">确认</button>
+        <button class="action-btn modify" bindtap="modifySchedule">修改</button>
+      </view>
+      <view class="card-confirmed" wx:else>
+        <icon type="success_no_circle" size="16" color="#07c160"></icon>
+        <text class="confirmed-text">已添加至日程</text>
+      </view>
+    </view>
+    
+    <!-- 任务卡片 -->
+    <view class="bubble-task" wx:if="{{contentType === 'task'}}">
+      <view class="task-header">
+        <text class="task-title">📝 任务建议</text>
+      </view>
+      <view class="task-body">
+        <text class="task-name">{{content.title}}</text>
+        <text class="task-desc">{{content.description}}</text>
+        <view class="task-meta">
+          <text class="task-priority">优先级: {{content.priority}}</text>
+          <text class="task-deadline">截止: {{content.deadline}}</text>
+        </view>
+      </view>
+      <view class="task-actions" wx:if="{{!isConfirmed}}">
+        <button class="action-btn confirm" bindtap="confirmTask">创建</button>
+        <button class="action-btn modify" bindtap="modifyTask">修改</button>
+      </view>
+      <view class="card-confirmed" wx:else>
+        <icon type="success_no_circle" size="16" color="#07c160"></icon>
+        <text class="confirmed-text">已添加至任务</text>
+      </view>
+    </view>
+    
+    <!-- 加载状态 -->
+    <view class="bubble-loading" wx:if="{{loading}}">
+      <view class="loading-dots">
+        <view class="loading-dot"></view>
+        <view class="loading-dot"></view>
+        <view class="loading-dot"></view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="bubble-avatar user-avatar" wx:if="{{type === 'user'}}">
+    <text class="avatar-text">我</text>
+  </view>
+</view> 

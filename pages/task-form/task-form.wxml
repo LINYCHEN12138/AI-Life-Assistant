@@ -1,0 +1,88 @@
+<!--pages/task-form/task-form.wxml-->
+<view class="container">
+  <form bindsubmit="saveTask">
+    <view class="form-card">
+      <!-- 任务标题 -->
+      <view class="form-group">
+        <view class="form-label">
+          <text class="required">*</text>
+          <text>任务标题</text>
+        </view>
+        <input 
+          class="form-input" 
+          name="title"
+          placeholder="请输入任务标题" 
+          value="{{taskForm.title}}"
+          bindinput="onFormInput"
+          data-field="title"
+        />
+      </view>
+
+      <!-- 截止日期 -->
+      <view class="form-group">
+        <view class="form-label">
+          <text>截止日期</text>
+        </view>
+        <picker 
+          mode="date" 
+          value="{{taskForm.deadline}}"
+          bindchange="onDateChange"
+          data-field="deadline"
+        >
+          <view class="picker-input {{taskForm.deadline ? '' : 'placeholder'}}">
+            {{taskForm.deadline || '选填'}}
+          </view>
+        </picker>
+      </view>
+
+      <!-- 优先级 -->
+      <view class="form-group">
+        <view class="form-label">
+          <text>优先级</text>
+        </view>
+        <view class="priority-selector">
+          <view 
+            class="priority-option {{taskForm.priority === 'low' ? 'active' : ''}}" 
+            data-priority="low" 
+            bindtap="selectPriority"
+          >低</view>
+          <view 
+            class="priority-option {{taskForm.priority === 'medium' ? 'active' : ''}}" 
+            data-priority="medium" 
+            bindtap="selectPriority"
+          >中</view>
+          <view 
+            class="priority-option {{taskForm.priority === 'high' ? 'active' : ''}}" 
+            data-priority="high" 
+            bindtap="selectPriority"
+          >高</view>
+        </view>
+      </view>
+
+      <!-- 任务描述 -->
+      <view class="form-group">
+        <view class="form-label">
+          <text>任务描述</text>
+        </view>
+        <textarea 
+          class="form-textarea" 
+          name="description"
+          placeholder="选填，请输入任务的详细描述" 
+          value="{{taskForm.description}}"
+          bindinput="onFormInput"
+          data-field="description"
+        />
+      </view>
+    </view>
+    
+    <!-- 提交和删除按钮 -->
+    <view class="footer-actions">
+      <button class="save-btn" form-type="submit" disabled="{{!taskForm.title}}">
+        {{isEditing ? '保存更新' : '创建任务'}}
+      </button>
+      <button class="delete-btn" wx:if="{{isEditing}}" bindtap="deleteTask">
+        删除任务
+      </button>
+    </view>
+  </form>
+</view> 

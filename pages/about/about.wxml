@@ -1,0 +1,25 @@
+<!--pages/about/about.wxml-->
+<view class="page-container">
+  <view class="logo-area">
+    <image class="logo" src="/images/logo.svg" mode="aspectFit"/>
+    <text class="app-name">AI生活助手</text>
+    <text class="version">版本 {{version}}</text>
+  </view>
+  <view class="info-list">
+    <view class="info-item">
+      <text class="item-label">项目简介</text>
+      <text class="item-content">一个基于AI的智能生活管理小程序，帮助您高效地安排日程、管理任务。</text>
+    </view>
+    <view class="info-item" bindtap="copyUrl">
+      <text class="item-label">开源地址</text>
+      <text class="item-content link">{{githubUrl}}</text>
+    </view>
+    <view class="info-item">
+      <text class="item-label">技术支持</text>
+      <text class="item-content">Gemini 2.5 Pro</text>
+    </view>
+  </view>
+  <view class="copyright">
+    <text>© 2025 AI Life Assistant. All Rights Reserved.</text>
+  </view>
+</view> 

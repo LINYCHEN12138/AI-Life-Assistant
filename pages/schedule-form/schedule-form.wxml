@@ -1,0 +1,96 @@
+<!--pages/schedule-form/schedule-form.wxml-->
+<view class="container">
+  <form bindsubmit="saveSchedule">
+    <view class="form-card">
+      <!-- 标题 -->
+      <view class="form-group">
+        <view class="form-label">
+          <text class="required">*</text>
+          <text>日程标题</text>
+        </view>
+        <input 
+          class="form-input" 
+          name="title"
+          placeholder="请输入日程标题" 
+          value="{{scheduleForm.title}}"
+          bindinput="onFormInput"
+          data-field="title"
+        />
+      </view>
+
+      <!-- 日期选择 -->
+      <view class="form-group">
+        <view class="form-label">
+          <text class="required">*</text>
+          <text>日期</text>
+        </view>
+        <picker 
+          mode="date" 
+          value="{{scheduleForm.date}}"
+          bindchange="onDateChange"
+        >
+          <view class="picker-input {{scheduleForm.date ? '' : 'placeholder'}}">
+            {{scheduleForm.date || '请选择日程日期'}}
+          </view>
+        </picker>
+      </view>
+
+      <!-- 时间选择 -->
+      <view class="form-row">
+        <view class="form-group">
+          <view class="form-label">
+            <text class="required">*</text>
+            <text>开始时间</text>
+          </view>
+          <picker 
+            mode="time" 
+            value="{{scheduleForm.startTime}}"
+            bindchange="onTimeChange"
+            data-field="startTime"
+          >
+            <view class="picker-input {{scheduleForm.startTime ? '' : 'placeholder'}}">
+              {{scheduleForm.startTime || '选择时间'}}
+            </view>
+          </picker>
+        </view>
+        <view class="form-group">
+          <view class="form-label">
+            <text>结束时间</text>
+          </view>
+          <picker 
+            mode="time" 
+            value="{{scheduleForm.endTime}}"
+            bindchange="onTimeChange"
+            data-field="endTime"
+          >
+            <view class="picker-input {{scheduleForm.endTime ? '' : 'placeholder'}}">
+              {{scheduleForm.endTime || '可选'}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+       <!-- 描述 -->
+      <view class="form-group">
+        <view class="form-label">
+          <text>日程描述</text>
+        </view>
+        <textarea 
+          class="form-textarea" 
+          name="description"
+          placeholder="选填，请输入日程的详细描述" 
+          value="{{scheduleForm.description}}"
+          bindinput="onFormInput"
+          data-field="description"
+        />
+      </view>
+    </view>
+    
+    <!-- 提交按钮 -->
+    <view class="footer-actions">
+      <button class="save-btn" form-type="submit" disabled="{{!scheduleForm.title || !scheduleForm.date || !scheduleForm.startTime}}">
+        保存日程
+      </button>
+    </view>
+  </form>
+</view> 
